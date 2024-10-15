@@ -90,7 +90,7 @@ const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
     origin: [
-      // process.env.FRONTEND_URL1,
+      process.env.FRONTEND_URL1,
       // process.env.FRONTEND_URL2,
       // process.env.FRONTEND_URL3,
       // process.env.FRONTEND_URL4,
