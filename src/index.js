@@ -91,9 +91,9 @@ const io = new Server(server, {
   cors: {
     origin: [
       process.env.FRONTEND_URL1,
-      // process.env.FRONTEND_URL2,
-      // process.env.FRONTEND_URL3,
-      // process.env.FRONTEND_URL4,
+      process.env.FRONTEND_URL2,
+      process.env.FRONTEND_URL3,
+      process.env.FRONTEND_URL4,
       process.env.FRONTEND_PRODUCTION,
     ],
   },
