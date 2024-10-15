@@ -60,7 +60,7 @@ export const currencyController = async (req, res) => {
 
 export const saveCurrencyInDBController = async (req, res) => {
   const currencyDB = await CurrencyModel.findOne();
-  if (currencyDB.conversionRates) {
+  if (currencyDB?.conversionRates) {
     return res.json(currencyDB.conversionRates);
   }
   // Realizar la solicitud a la API de tasas de cambio
