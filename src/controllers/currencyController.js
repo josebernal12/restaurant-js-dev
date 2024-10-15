@@ -1,7 +1,7 @@
 import CurrencyModel from "../model/CurrencyModel.js";
 import productModel from "../model/ProductModel.js";
-import cron from 'node-cron'
-import moment from 'moment-timezone'
+import cron from "node-cron";
+import moment from "moment-timezone";
 export const currencyController = async (req, res) => {
   const { fromCurrency, toCurrency } = req.body;
 
@@ -106,16 +106,11 @@ export const updateCurrencInDBController = async (req, res) => {
         currencyDB.conversionRates = rates;
         await currencyDB.save();
 
-        console.log("Tasas de cambio actualizadas:", rates);
+        res.json(currencyDB);
       }
-    });
-
-    res.json({
-      message: `Tarea programada para ejecutarse a las 5:00 AM en la zona horaria: ${timezone}`,
     });
   } catch (error) {
     console.error("Error al actualizar las tasas de cambio:", error);
     res.status(500).json({ error: "Error al actualizar las tasas de cambio." });
   }
-  res.json(currencyDB);
 };
