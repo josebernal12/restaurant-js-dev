@@ -57,7 +57,10 @@ export const userSellByTable = async (id, name, date, companyId) => {
         case "day":
           // Filtrar por día (hoy)
           const timeZone = "America/Mazatlan";
-          const startOfDayDate = momentZone.tz(timeZone).startOf("day").toDate();
+          const startOfDayDate = momentZone
+            .tz(timeZone)
+            .startOf("day")
+            .toDate();
           const endOfDayDate = momentZone.tz(timeZone).endOf("day").toDate();
 
           query = {
@@ -496,7 +499,6 @@ export const productSellAll = async (
   }
 };
 
-
 export const billSellByQuery = async (
   date,
   companyId,
@@ -545,7 +547,10 @@ export const billSellByQuery = async (
 
         case "day":
           // Filtrar por día (hoy)
-          const startOfDayDate = momentZone().tz(timeZone).startOf("day").toDate();
+          const startOfDayDate = momentZone()
+            .tz(timeZone)
+            .startOf("day")
+            .toDate();
           const endOfDayDate = momentZone().tz(timeZone).endOf("day").toDate();
           query = {
             createdAt: {
@@ -630,13 +635,12 @@ export const sellsCategory = async (
     const bills = await billModel.find(query).populate("ticketId");
 
     // Inicializar todas las categorías con 0
-    const categories = await categoryModel.find({});
+    const categories = await categoryModel.find({ companyId });
     const categoryCount = {};
 
     categories.forEach((category) => {
       categoryCount[category.name] = 0;
     });
-    console.log(bills)
     // Contar las ventas por categoría
     for (const bill of bills) {
       for (const ticket of bill.ticketId) {
